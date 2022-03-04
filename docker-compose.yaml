@@ -1,0 +1,42 @@
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./.docker/postgres-data:/var/lib/postgresql/data
+    env_file:
+      - ./.env
+    ports:
+      - "${POSTGRES_PORT?5432}:5432"
+    networks:
+      test-net:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    volumes:
+      - .:/usr/src/app
+    env_file:
+      - ./.env
+    networks:
+      test-net:
+  empty_service:
+    image: centos
+    networks:
+      test-net:
+  #price_checker:
+  #  build:
+  #    context: .
+  #    dockerfile: Dockerfile.price_checker
+  #  depends_on:
+  #    - db
+  #  env_file:
+  #    ./price_checker.env
+  #  networks:
+  #    test_net:
+
+networks:
+  test-net:
