@@ -7,7 +7,7 @@ use lib::db::create_table;
 mod endpoints;
 
 fn main() {
-    create_table();
+    create_table().expect("Filed to create table");
     rocket::ignite()
         .mount(
             "/",

@@ -4,8 +4,8 @@ use serde::{Deserialize, Serialize};
 pub struct LimitOrder {
     pub id: i32,
     pub pair: String,
-    pub price: u32,
-    pub value: u32,
+    pub price: i32,
+    pub value: i32,
     pub closed: bool,
     pub owner: String,
 }
