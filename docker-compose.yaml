@@ -21,22 +21,11 @@ services:
       - .:/usr/src/app
     env_file:
       - ./.env
+    environment:
+      DATABASE_URL: "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db/${POSTGRES_DB}"
+    restart: unless-stopped
     networks:
       test-net:
-  empty_service:
-    image: centos
-    networks:
-      test-net:
-  #price_checker:
-  #  build:
-  #    context: .
-  #    dockerfile: Dockerfile.price_checker
-  #  depends_on:
-  #    - db
-  #  env_file:
-  #    ./price_checker.env
-  #  networks:
-  #    test_net:
 
 networks:
   test-net:

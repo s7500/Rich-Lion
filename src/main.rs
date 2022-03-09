@@ -4,10 +4,12 @@
 extern crate rocket;
 
 use lib::db::create_table;
+use lib::binance_connector::pair_webhook;
 mod endpoints;
 
 fn main() {
     create_table().expect("Filed to create table");
+    pair_webhook();
     rocket::ignite()
         .mount(
             "/",

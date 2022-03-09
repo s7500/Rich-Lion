@@ -15,6 +15,7 @@ serde_json = "1.0"
 postgres = { version = "0.19", features = ["with-chrono-0_4"] }
 postgres-types = { version = "0.1.1", features = ["derive"] }
 rand = "0.7"
+binance = { git = "https://github.com/wisespace-io/binance-rs.git" }
 
 [dependencies.rocket_contrib]
 version = "0.4"
